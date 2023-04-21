@@ -1,7 +1,7 @@
 <?php
 
 if (isset($_POST["submit"])) {
-    $email = $_POST["email"]; 
+    $email = $_POST["email"];
     $password = $_POST["password"];
 
     require_once 'dbh.inc.php';
@@ -13,8 +13,7 @@ if (isset($_POST["submit"])) {
     }
 
     loginUser($conn, $email, $password);
-}
-else {
+} else {
     header("location: ../login.php");
     exit();
 }

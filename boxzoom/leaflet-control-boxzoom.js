@@ -21,8 +21,14 @@
             this.setStateOff(),
             this.options.iconClasses)
         ) {
-            var t = L.DomUtil.create("i", this.options.iconClasses, this.controlDiv);
-            t ? ((t.style.color = this.options.iconColor || "black"), (t.style.textAlign = "center"), (t.style.verticalAlign = "middle")) : console.log("Unable to create element for icon");
+            let t = L.DomUtil.create("i", this.options.iconClasses, this.controlDiv);
+            if (t) {
+                t.style.color = this.options.iconColor || "black";
+                t.style.textAlign = "center";
+                t.style.verticalAlign = "middle";
+              } else {
+                console.log("Unable to create element for icon");
+              }
         }
         return (
             this.options.aspectRatio &&
@@ -31,8 +37,11 @@
         );
     },
     onRemove: function (o) {
-        this.options.aspectRatio && (delete this.map.boxZoom.aspectRatio, (this.map.boxZoom._onMouseMove = L.Map.BoxZoom.prototype._onMouseMove), (this.map.boxZoom._onMouseUp = L.Map.BoxZoom.prototype._onMouseUp));
-    },
+        if (this.options.aspectRatio) {
+            delete this.map.boxZoom.aspectRatio;
+            this.map.boxZoom._onMouseMove = L.Map.BoxZoom.prototype._onMouseMove;
+            this.map.boxZoom._onMouseUp = L.Map.BoxZoom.prototype._onMouseUp;
+        }    },
     toggleState: function () {
         this.active ? this.setStateOff() : this.setStateOn();
     },
@@ -58,28 +67,29 @@
     },
     _boxZoomControlOverride_onMouseMove: function (o) {
         this._moved || ((this._box = L.DomUtil.create("div", "leaflet-zoom-box", this._pane)), L.DomUtil.setPosition(this._box, this._startLayerPoint), (this._container.style.cursor = "crosshair"), this._map.fire("boxzoomstart"));
-        var t = this._startLayerPoint,
+        let t = this._startLayerPoint,
             i = this._box,
             s = this._map.mouseEventToLayerPoint(o),
             e = s.subtract(t),
             n = new L.Point(Math.min(s.x, t.x), Math.min(s.y, t.y));
         L.DomUtil.setPosition(i, n), (this._moved = !0);
-        var a = Math.max(0, Math.abs(e.x) - 4),
+        let a = Math.max(0, Math.abs(e.x) - 4),
             l = Math.max(0, Math.abs(e.y) - 4);
         this.aspectRatio && (l = a / this.aspectRatio), (i.style.width = a + "px"), (i.style.height = l + "px");
     },
     _boxZoomControlOverride_onMouseUp: function (o) {
-        var t = this._box._leaflet_pos,
+        let t = this._box._leaflet_pos,
             i = new L.Point(this._box._leaflet_pos.x + this._box.offsetWidth, this._box._leaflet_pos.y + this._box.offsetHeight),
             s = this._map.layerPointToLatLng(t),
             e = this._map.layerPointToLatLng(i);
         if (!s.equals(e)) {
             this._finish();
-            var n = new L.LatLngBounds(s, e);
-            this._map.fitBounds(n), this._map.fire("boxzoomend", { boxZoomBounds: n });
+            let n = new L.LatLngBounds(s, e);
+            this._map.fitBounds(n);
+            this._map.fire("boxzoomend", { boxZoomBounds: n });
         }
     },
-})),
+}))
     (L.Control.boxzoom = function (o) {
         return new L.Control.BoxZoom(o);
     });

@@ -2,17 +2,17 @@
 map.attributionControl.setPosition("bottomleft");
 
 L.control.zoom({ position: 'topright' }).addTo(map);
-var rulerControl = L.control.ruler().addTo(map);
+let rulerControl = L.control.ruler().addTo(map);
 L.Control.boxzoom({ position:'topright' }).addTo(map);
 L.control.coordinates({ position:"bottomright" }).addTo(map);
 new L.HistoryControl({}).addTo(map);
 
-var layerGroup = L.layerGroup(namesOfLayers.map(layer => window[layer]));
-var opacitySliderGroup = new L.Control.opacitySliderGroup();
+let layerGroup = L.layerGroup(namesOfLayers.map(layer => window[layer]));
+let opacitySliderGroup = new L.Control.opacitySliderGroup();
 map.addControl(opacitySliderGroup);
 opacitySliderGroup.setOpacityLayerGroup(layerGroup);
 
-var baseMaps = {
+let baseMaps = {
     "Open Street Map": OpenStreetMap,
     "Gray": Esri_WorldGrayCanvas,
     "Satellite": Satellite
@@ -50,21 +50,19 @@ $('#satellite').click(function(){
 });
 
 //--------------------------------------------------
-var legend, div, legendImage, legendUrl;
+let legend, div, legendImage, legendUrl;
   legend = L.control({position: 'bottomright'});
   legend.onAdd = function (map) {
-    div = L.DomUtil.create('div', 'info legend'), legendImage = '<img src="' + legendUrl + '">';
+    div = L.DomUtil.create('div', 'info legend');
+    legendImage = '<img src="' + legendUrl + '">';
     div.innerHTML = (legendImage);
     return div;
   }
-  // https://apps.nationalmap.gov/services/
 $('.layercheckbox').click(function() {
   if ($("#" + this.id).is(':checked')){
     map.addLayer(window[this.id]);
 
-    // map.fitBounds(window[this.id].getBounds());
-
-  var encodedLayerName = encodeURIComponent(this.id.replace(/_/g, ' '));
+  let encodedLayerName = encodeURIComponent(this.id.replace(/_/g, ' '));
     legendUrl = $(this).closest('label').attr('id') + "REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=" + encodedLayerName;
     legend.addTo(map);
   }

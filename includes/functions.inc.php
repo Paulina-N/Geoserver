@@ -1,43 +1,45 @@
 <?php
+define('SIGNUP_ERROR_URL', 'location: ../signup.php?error=stmtfailed');
 
-function emptyInputSignup($firstName, $lastName, $email, $password, $passwordRepeat) {
-    $result;
+function emptyInputSignup($firstName, $lastName, $email, $password, $passwordRepeat)
+{
+    $result = true;
     if (empty($firstName) || empty($lastName) || empty($email) || empty($password) || empty($passwordRepeat)) {
         $result = true;
-    }
-    else {
+    } else {
         $result = false;
     }
     return $result;
 }
 
-function invalidEmail($email) {
-    $result;
+function invalidEmail($email)
+{
+    $result = true;
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $result = true;
-    }
-    else {
+    } else {
         $result = false;
     }
     return $result;
 }
 
-function passwordMatch($password, $passwordRepeat) {
-    $result;
+function passwordMatch($password, $passwordRepeat)
+{
+    $result = true;
     if ($password !== $passwordRepeat) {
         $result = true;
-    }
-    else {
+    } else {
         $result = false;
     }
     return $result;
 }
 
-function emailExists($conn, $email) {
+function emailExists($conn, $email)
+{
     $sql = "SELECT * FROM users WHERE usersEmail = ?;";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../signup.php?error=stmtfailed");
+        header(SIGNUP_ERROR_URL);
         exit();
     }
 
@@ -47,21 +49,20 @@ function emailExists($conn, $email) {
     $resultData = mysqli_stmt_get_result($stmt);
 
     if ($row = mysqli_fetch_assoc($resultData)) {
+        mysqli_stmt_close($stmt);
         return $row;
+    } else {
+        mysqli_stmt_close($stmt);
+        return false;
     }
-    else {
-        $result = false;
-        return $result;
-    }
-
-    mysqli_stmt_close($stmt);
 }
 
-function createUser($conn, $firstName, $lastName, $email, $password) {
+function createUser($conn, $firstName, $lastName, $email, $password)
+{
     $sql = "INSERT INTO users (usersFirstName, usersLastName, usersEmail, usersPwd) VALUES (?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../signup.php?error=stmtfailed");
+        header(SIGNUP_ERROR_URL);
         exit();
     }
 
@@ -71,14 +72,15 @@ function createUser($conn, $firstName, $lastName, $email, $password) {
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
     header("location: ../login.php?error=none");
-        exit();
+    exit();
 }
 
-function createUserCompany($conn, $firstName, $lastName, $companyId, $email, $password) {
+function createUserCompany($conn, $firstName, $lastName, $companyId, $email, $password)
+{
     $sql = "INSERT INTO users (usersFirstName, usersLastName, companyId, usersEmail, usersPwd) VALUES (?, ?, ?, ?, ?);";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../signup.php?error=stmtfailed");
+        header(SIGNUP_ERROR_URL);
         exit();
     }
 
@@ -92,11 +94,12 @@ function createUserCompany($conn, $firstName, $lastName, $companyId, $email, $pa
         exit();
 }
 
-function createCompany($conn, $name, $firstName, $lastName, $email, $password) {
+function createCompany($conn, $name, $firstName, $lastName, $email, $password)
+{
     $sql = "INSERT INTO companies (name) VALUES (?);";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../signup.php?error=stmtfailed");
+        header(SIGNUP_ERROR_URL);
         exit();
     }
     mysqli_stmt_bind_param($stmt, "s", $name);
@@ -109,18 +112,19 @@ function createCompany($conn, $name, $firstName, $lastName, $email, $password) {
     createUserCompany($conn, $firstName, $lastName, $companyId, $email, $password);
 }
 
-function emptyInputLogin($email, $password) {
-    $result;
+function emptyInputLogin($email, $password)
+{
+    $result = true;
     if (empty($email) || empty($password)) {
         $result = true;
-    }
-    else {
+    } else {
         $result = false;
     }
     return $result;
 }
 
-function loginUser($conn, $email, $password) {
+function loginUser($conn, $email, $password)
+{
     $emailExists = emailExists($conn, $email);
 
     if ($emailExists === false) {
@@ -134,8 +138,7 @@ function loginUser($conn, $email, $password) {
     if ($checkPassword === false) {
         header("location: ../login.php?error=wronglogin");
         exit();
-    }
-    else if ($checkPassword === true) {
+    } elseif ($checkPassword === true) {
         session_start();
         $_SESSION["userid"] = $emailExists["usersId"];
         $_SESSION["useremail"] = $emailExists["usersEmail"];

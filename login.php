@@ -7,15 +7,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
 	<meta name="author" content="AdminKit">
-	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
-
+	<meta name="keywords"
+		content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive,
+		css, sass, html, theme, front-end, ui kit, web">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link rel="shortcut icon" href="img/favicon.png" />
-
 	<link rel="canonical" href="https://demo-basic.adminkit.io/pages-sign-in.html" />
-
 	<title>Sign In | Geoserver</title>
-
 	<link href="css/app.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
@@ -26,14 +24,12 @@
 			<div class="row vh-100">
 				<div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
 					<div class="d-table-cell align-middle">
-
 						<div class="text-center mt-4">
 							<h1 class="h2">Geoserver</h1>
 							<p class="lead">
 								Sign in to your account to continue
 							</p>
 						</div>
-
 						<div class="card">
 							<div class="card-body">
 								<div class="m-sm-4">
@@ -44,7 +40,8 @@
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Password</label>
-											<input class="form-control form-control-lg" type="password" name="password" placeholder="Enter your password" />
+											<input class="form-control form-control-lg" type="password"
+												name="password" placeholder="Enter your password" />
 										</div>
 										<div class="text-center mt-3">
 											<a href="index.php">
@@ -58,26 +55,20 @@
 								</div>
 							</div>
 						</div>
-
 						<?php
 						if (isset($_GET["error"])) {
 							if ($_GET["error"] == "emptyinput") {
 								echo "<p>Fill in all fields!<p>";
-							}
-							else if ($_GET["error"] == "wronglogin") {
+							} elseif ($_GET["error"] == "wronglogin") {
 								echo "<p>Wrong login details!<p>";
 							}
 						}
 						?>
-
 					</div>
 				</div>
 			</div>
 		</div>
 	</main>
-
 	<script src="js/app.js"></script>
-
 </body>
-
 </html>

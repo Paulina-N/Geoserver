@@ -1,5 +1,5 @@
 <?php
-require("header.php");
+require_once("header.php");
 include_once 'includes/dbh.inc.php';
 ?>
 <main class="content">
@@ -12,7 +12,7 @@ include_once 'includes/dbh.inc.php';
 		<strong>You didn't choose a company!</strong>
 	</div>
 	<div class="container-fluid p-0">
-	<?php if($adminID != $userID) { ?>
+	<?php if ($adminID != $userID) { ?>
 		<h1 class="h3 mb-3">Company</h1>
 
 		<div class="row">
@@ -34,12 +34,15 @@ include_once 'includes/dbh.inc.php';
 								}
 							?>
 						</select>
-						<button class="btn btn-success" onclick="sendJoinRequest('<?php echo $userID; ?>', document.getElementById('selectCompany').value)">Send request</button>
+						<button class="btn btn-success"
+							onclick="sendJoinRequest('<?php echo $userID; ?>', document.getElementById('selectCompany').value)">
+							Send request</button>
 						<?php
-							if(isset($_POST["companyId"])) {
+							if (isset($_POST["companyId"])) {
 								$companyId = $_POST["companyId"];
 								$userId = $_POST["userId"];
-								mysqli_query($conn, "INSERT INTO join_companies (`userId`, `companyId`, `status`) VALUES ('$userId', '$companyId', 'PENDING')");
+								mysqli_query($conn, "INSERT INTO join_companies (`userId`, `companyId`, `status`)
+									VALUES ('$userId', '$companyId', 'PENDING')");
 							}
 						?>
 					</div>
@@ -70,9 +73,7 @@ include_once 'includes/dbh.inc.php';
 				</div>
 			</div>
 		</div>
-		<?php }
-		else {
-			?>
+		<?php } else { ?>
 			<h1 class="h3 mb-3">Join Requests</h1>
 			<div class="row">
 				<div class="col-md-7">
@@ -94,11 +95,15 @@ include_once 'includes/dbh.inc.php';
 										while ($row = mysqli_fetch_array($result)) {
 											$userId = $row['userId'];
 											$requestId = $row['id'];
-											$res = mysqli_query($conn, "SELECT usersId, usersFirstName, usersLastName, usersEmail FROM users WHERE usersId='$userId'");
+											$res = mysqli_query($conn, "SELECT usersId, usersFirstName, usersLastName, usersEmail
+												FROM users WHERE usersId='$userId'");
 											$user = mysqli_fetch_array($res);
 											echo '<tr id=' . $requestId . '><td>' . $user['usersFirstName'] . ' ' . $user['usersLastName'] . '</td>';
 											echo '<td>' . $user['usersEmail'] . '</td>';
-											echo '<td><button class="btn btn-success" onclick="acceptRequest(' . $requestId . ', ' . $companyID . ', ' . $user['usersId'] . ')" style="margin-right: 20px;">Accept</button><button class="btn btn-danger" onclick="rejectRequest(' . $requestId . ')">Reject</button></td></tr>';
+											echo '<td><button class="btn btn-success"
+												onclick="acceptRequest(' . $requestId . ', ' . $companyID . ', ' . $user['usersId'] . ')"
+												style="margin-right: 20px;">Accept</button><button class="btn btn-danger"
+												onclick="rejectRequest(' . $requestId . ')">Reject</button></td></tr>';
 										}
 										if (isset($_POST['accept'])) {
 											$accept = $_POST['accept'];
@@ -142,7 +147,8 @@ include_once 'includes/dbh.inc.php';
 										$requestId = $joinRequest['id'];
 										echo '<tr id="list' . $requestId . '"><td>' . $row['usersFirstName'] . ' ' . $row['usersLastName'] . '</td>';
 										echo '<td>' . $row['usersEmail'] . '</td>';
-										echo '<td><button class="btn btn-danger" onclick="removeTeammate(' . $requestId . ', ' . $userId . ')">Remove</button></td></tr>';
+										echo '<td><button class="btn btn-danger"
+											onclick="removeTeammate(' . $requestId . ', ' . $userId . ')">Remove</button></td></tr>';
 										}
 									}
 									if (isset($_POST['removeTeammate'])) {
@@ -163,13 +169,10 @@ include_once 'includes/dbh.inc.php';
 		?>
 		<h1 class="h3 mb-3"> Map Settings</h1>
 
-
-
 		<?php
 		if ($userID == $adminID || $adminID == null) {
 			$is_admin = true;
-		}
-		else {
+		} else {
 			$is_admin = false;
 		}
 
@@ -183,7 +186,8 @@ include_once 'includes/dbh.inc.php';
 			<div class="col-md-7">
 				<div class="card flex-fill">
 					<div class="card-header">
-						<h5 class="card-title mb-0">Layers<button id="new" <?php echo $disabled; ?> onclick="addLayer()" class="btn btn-success" style="float: right">Add new layer</button></h5>
+						<h5 class="card-title mb-0">Layers<button id="new" <?php echo $disabled; ?> onclick="addLayer()"
+							class="btn btn-success" style="float: right">Add new layer</button></h5>
 					</div>
 
 					<div id="layerpopup">
@@ -191,9 +195,12 @@ include_once 'includes/dbh.inc.php';
 							<form action="#" id="layerform" method="post" name="layerform">
 								<h2>Add New Layer</h2>
 								<hr>
-								<input id="layertitle" name="layertitle" type="text" class="form-control" placeholder="Layer title" required><br>
-								<input id="layername" name="layername" type="text" class="form-control" placeholder="Layer name (underscore instead of space)" required><br>
-								<input id="layerlink" name="layerlink" type="text" class="form-control" placeholder="Url" required><br>
+								<input id="layertitle" name="layertitle" type="text"
+									class="form-control" placeholder="Layer title" required><br>
+								<input id="layername" name="layername" type="text"
+									class="form-control" placeholder="Layer name (underscore instead of space)" required><br>
+								<input id="layerlink" name="layerlink" type="text"
+									class="form-control" placeholder="Url" required><br>
 								<input type="hidden" id="companyID" value="<?php echo $companyID; ?>"><br>
 								<button onclick="sendLayerData()" id="submit" class="btn btn-success" style="float: right">Create</button>
 								<button onclick ="closeForm()" class="btn btn-danger" style="float: left">Cancel</button>
@@ -230,7 +237,11 @@ include_once 'includes/dbh.inc.php';
 
 					<table id="layertable" class="table table-hover my-0">
 						<tbody>
-						<?php 
+							<th>Layer</th>
+							<th>Group</th>
+							<th>Edit</th>
+							<th>Delete</th>
+						<?php
 							
 							while ($row = mysqli_fetch_array($layersResult)) {
 							$layerId = $row['id'];
@@ -239,58 +250,66 @@ include_once 'includes/dbh.inc.php';
 							$layerUrl = $row['url'];
 							$linkToGroup = $row['link'];
 							?>
-							<tr id="<?php echo ($row['id']);?>">
+							<tr id="<?php echo $row['id']; ?>">
 								<td> <?php echo $layer; ?> </td>
 								<td>
-									<select <?php echo $disabled; ?> id="<?php echo ($layerId);?>" class="form-select"  onchange="handleSelectChange(event, this.value, '<?php echo $layer; ?>')">
+									<select <?php echo $disabled; ?> id="<?php echo $layerId; ?>" class="form-select"
+										onchange="handleSelectChange(event, this.value, '<?php echo $layer; ?>')">
 
 									<?php
 									if ($linkToGroup == null || $linkToGroup == 0) { ?>
 										<option selected hidden>Group is not set</option>
 									<?php } else {
-										$sqlParent=mysqli_query($conn,"SELECT name FROM groups WHERE id='$linkToGroup'");
+										$sqlParent=mysqli_query($conn, "SELECT name FROM groups WHERE id='$linkToGroup'");
 										$group = mysqli_fetch_assoc($sqlParent);
 										$resName = $group['name']; ?>
-										<option class="layersList" selected hidden value="<?php echo $linkToGroup;?>" id="<?php echo $linkToGroup;?>"> <?php echo $resName; ?> </option>
-									<?php } 
+										<option class="layersList" selected hiddenvalue="<?php echo $linkToGroup;?>"
+											id="<?php echo $linkToGroup;?>"> <?php echo $resName; ?> </option>
+									<?php }
 									?>
 
-									<?php foreach ($groupResult as $groupId => $groupName) { 
+									<?php foreach ($groupResult as $groupId => $groupName) {
 										?>
 										<option value="<?php echo $groupId;?>" id="<?php echo $groupId;?>"> <?php echo $groupName; ?> </option>
 									<?php } ?>
 								</select>
 								</td>
 								
-								<td><button <?php echo $disabled; ?> onclick="editLayer('<?php echo $layer; ?>', '<?php echo $layername; ?>', '<?php echo $layerUrl; ?>', '<?php echo $layerId; ?>')" class="btn btn-warning btn-sm">Edit</button></td>
-								<td><button <?php echo $disabled; ?> onclick="removeLayer('<?php echo $layerId; ?>')" class="btn btn-danger btn-sm">Delete</button></td>
-								<?php if(isset($_POST["removeLayerId"])) {
+								<td><button <?php echo $disabled; ?> onclick="editLayer('<?php echo $layer; ?>', '<?php echo $layername; ?>',
+									'<?php echo $layerUrl; ?>', '<?php echo $layerId; ?>')" class="btn btn-warning btn-sm">Edit</button></td>
+								<td><button <?php echo $disabled; ?> onclick="removeLayer('<?php echo $layerId; ?>')"
+									class="btn btn-danger btn-sm">Delete</button></td>
+								<?php if (isset($_POST["removeLayerId"])) {
 											$rid = $_POST["removeLayerId"];
 											$sql=mysqli_query($conn,"DELETE FROM layers WHERE id=$rid");
 										}
-										if(isset($_POST["editLayer"])) {
+										if (isset($_POST["editLayer"])) {
 											$elayertitle = $_POST["editLayer"];
 											$elayername = $_POST["editLayerName"];
 											$elayerlink = $_POST["layerlink"];
 											$elayerid = $_POST["editlayerid"];
 											$companyID = $_POST["companyID"];
-											$sql=mysqli_query($conn, "UPDATE layers SET title='$elayertitle', name='$elayername', url='$elayerlink', companyID='$companyID' WHERE id='$elayerid'");
+											$sql=mysqli_query($conn, "UPDATE layers SET title='$elayertitle', name='$elayername',
+												url='$elayerlink', companyID='$companyID' WHERE id='$elayerid'");
 										}
-										if(isset($_POST["chosenGroupId"])) {
+										if (isset($_POST["chosenGroupId"])) {
 											$chosenGroupId = $_POST["chosenGroupId"];
 											$chosenLayer = $_POST["layertitle"];
-											$sql=mysqli_query($conn,"UPDATE layers SET link='$chosenGroupId' WHERE title='$chosenLayer'");
+											$sql=mysqli_query($conn, "UPDATE layers SET link='$chosenGroupId' WHERE title='$chosenLayer'");
 										}  ?>
 							</tr>
             				<?php } ?>
 							<?php
-							if(isset($_POST["addLayer"])) {
+							if (isset($_POST["addLayer"])) {
 								$atitle = $_POST["addLayer"];
 								$aname = $_POST["layername"];
 								$alink = $_POST["layerlink"];
 								$companyID = $_POST["companyID"];
-								$sql=mysqli_query($conn, "INSERT INTO layers (`title`, `name`, `url`, `companyId`) VALUES ('$atitle', '$aname', '$alink', '$companyID')");
-								
+								$sql=mysqli_query($conn,
+									"INSERT INTO layers (`title`, `name`, `url`, `companyId`)
+									VALUES ('$atitle', '$aname', '$alink', '$companyID')"
+									);
+									
 							}
 							?>
 						</tbody>
@@ -302,7 +321,8 @@ include_once 'includes/dbh.inc.php';
 			<div class="col-md-5">
 				<div class="card flex-fill">
 					<div class="card-header">
-						<h5 class="card-title mb-0">Groups <button <?php echo $disabled; ?> onclick="addGroup()" class="btn btn-success" style="float: right">Add new group</button></h5>
+						<h5 class="card-title mb-0">Groups <button <?php echo $disabled; ?> onclick="addGroup()"
+							class="btn btn-success" style="float: right">Add new group</button></h5>
 					</div>
 
 					<div id="grouppopup">
@@ -312,7 +332,8 @@ include_once 'includes/dbh.inc.php';
 								<hr>
 								<input id="groupname" name="groupname" type="text" class="form-control" placeholder="Group name"><br>
 								<input type="hidden" id="companyID" value="<?php echo $companyID; ?>"><br>
-								<button onclick="sendGroupData()" id="submit" class="btn btn-success" style="float: right">Create</button>
+								<button onclick="sendGroupData()" id="submit"
+									class="btn btn-success" style="float: right">Create</button>
 								<button onclick ="closeGroupForm()" class="btn btn-danger" style="float: left">Cancel</button>
 							</form>
 						</div>
@@ -345,18 +366,23 @@ include_once 'includes/dbh.inc.php';
 					</div>
 
 					<table id="table" class="table table-hover my-0">
+						<th>Group</th>
+						<th>Edit</th>
+						<th>Delete</th>
 						<tbody>
 						<?php foreach ($groupsResult as $group) {
 							?>
-							<tr id="<?php echo ($group['id']);?>">
+							<tr id="<?php echo $group['id'];?>">
 								<td> <?php echo $group['name']; ?> </td>
-								<td><button <?php echo $disabled; ?> onclick="editGroup('<?php echo $group['name']; ?>', '<?php echo $group['id']; ?>')" class="btn btn-warning btn-sm">Edit</button></td>
-								<td><button <?php echo $disabled; ?> onclick="removeGroup('<?php echo $group['id']; ?>')" class="btn btn-danger btn-sm">Delete</button></td>
-								<?php if(isset($_POST["removeGroupId"])) {
+								<td><button <?php echo $disabled; ?> onclick="editGroup('<?php echo $group['name']; ?>',
+									'<?php echo $group['id']; ?>')" class="btn btn-warning btn-sm">Edit</button></td>
+								<td><button <?php echo $disabled; ?> onclick="removeGroup('<?php echo $group['id']; ?>')"
+									class="btn btn-danger btn-sm">Delete</button></td>
+								<?php if (isset($_POST["removeGroupId"])) {
 											$rid = $_POST["removeGroupId"];
-											$sql=mysqli_query($conn,"DELETE FROM groups WHERE id=$rid");
-										} 
-										if(isset($_POST["editGroup"])) {
+											$sql=mysqli_query($conn, "DELETE FROM groups WHERE id=$rid");
+										}
+										if (isset($_POST["editGroup"])) {
 											$groupId = $_POST["groupId"];
 											$ename = $_POST["editGroup"];
 											$companyID = $_POST["companyID"];
@@ -365,7 +391,7 @@ include_once 'includes/dbh.inc.php';
 							</tr>
             				<?php } ?>
 							<?php
-							if(isset($_POST["addGroup"])) {
+							if (isset($_POST["addGroup"])) {
 								$aname = $_POST["addGroup"];
 								$companyID = $_POST["companyID"];
 								$sql=mysqli_query($conn, "INSERT INTO groups (`name`, `companyID`) VALUES ('$aname', '$companyID')");
@@ -380,7 +406,7 @@ include_once 'includes/dbh.inc.php';
 </main>
 
 <?php
-require("footer.php");
+require_once("footer.php");
 ?>
 
 <script>
@@ -466,7 +492,8 @@ function sendLayerData1() {
 	let layerid = document.getElementById("elayerid").value;
 	let companyID = document.getElementById("companyID").value;
 	
-	$.post("settings.php", { editLayer: editLayer, editLayerName: editLayerName, layerlink: layerlink, editlayerid: layerid, companyID: companyID });
+	$.post("settings.php", { editLayer: editLayer, editLayerName: editLayerName,
+			layerlink: layerlink, editlayerid: layerid, companyID: companyID });
 }
 
 function sendLayerData2() {

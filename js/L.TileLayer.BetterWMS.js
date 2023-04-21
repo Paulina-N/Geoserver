@@ -8,10 +8,10 @@ function bubbleSort(arr){
   };
   return arr;
 };
-var parser; var parser1; var parserc;
-var doc; var doc1; var docc;
-var elm; var elm1; var elmc;
-var latlngString;
+let parser; let parser1; let parserc;
+let doc; let doc1; let docc;
+let elm; let elm1; let elmc;
+let latlngString;
 L.TileLayer.BetterWMS = L.TileLayer.WMS.extend({
 
   onAdd: function (map) {
@@ -25,12 +25,12 @@ L.TileLayer.BetterWMS = L.TileLayer.WMS.extend({
   },
   
   getFeatureInfo: function (evt) {
-    var url = this.getFeatureInfoUrl(evt.latlng),
+    let url = this.getFeatureInfoUrl(evt.latlng),
         showResults = L.Util.bind(this.showGetFeatureInfo, this);
     $.ajax({
       url: url,
       success: function (data, status, xhr) {
-        var err = typeof data === 'string' ? null : data;
+        let err = typeof data === 'string' ? null : data;
         showResults(err, evt.latlng, data);
       },
       error: function (xhr, status, error) {
@@ -40,7 +40,7 @@ L.TileLayer.BetterWMS = L.TileLayer.WMS.extend({
   },
   
   getFeatureInfoUrl: function (latlng) {
-    var point = this._map.latLngToContainerPoint(latlng, this._map.getZoom()),
+    let point = this._map.latLngToContainerPoint(latlng, this._map.getZoom()),
         size = this._map.getSize(),
         
         params = {
@@ -91,11 +91,11 @@ L.tileLayer.betterWms = function (url, options) {
 };
 
 function download_csv_file() {
-  var csv = "";
-  var delimiter = ",";
-  
-  for (let i = 0; i < elm.length; i++) {
-    csv += field_in_quotes(elm[i].innerHTML, delimiter) + delimiter;
+  let csv = "";
+  let delimiter = ",";
+
+  for (let i of elm) {
+    csv += field_in_quotes(i.innerHTML, delimiter) + delimiter;
   }
   csv += "\n";
   let iterator = 0;
@@ -114,7 +114,7 @@ function download_csv_file() {
 
   let csvContent = "data:text/csv;charset=utf-8," + encodeURIComponent(csv);
 
-  var hiddenElement = document.createElement('a');
+  let hiddenElement = document.createElement('a');
   hiddenElement.href = csvContent;
   hiddenElement.target = '_blank';
   

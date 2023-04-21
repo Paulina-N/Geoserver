@@ -12,7 +12,9 @@ include_once 'includes/dbh.inc.php';
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
 	<meta name="author" content="AdminKit">
-	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+	<meta name="keywords"
+		content="adminkit, bootstrap, bootstrap 5, admin,dashboard, template, responsive,
+		css,sass, html, theme, front-end, ui kit, web">
 
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link rel="shortcut icon" href="img/favicon.png" />
@@ -34,7 +36,8 @@ include_once 'includes/dbh.inc.php';
 		crossorigin="">
 	</script>
 	<!-- Ruler -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/gokertanrisever/leaflet-ruler@master/src/leaflet-ruler.css" integrity="sha384-P9DABSdtEY/XDbEInD3q+PlL+BjqPCXGcF8EkhtKSfSTr/dS5PBKa9+/PMkW2xsY" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/gokertanrisever/leaflet-ruler@master/src/leaflet-ruler.css"
+	integrity="sha384-P9DABSdtEY/XDbEInD3q+PlL+BjqPCXGcF8EkhtKSfSTr/dS5PBKa9+/PMkW2xsY" crossorigin="anonymous">
 	<!-- ZoomBox -->
 	<link rel="stylesheet" href="boxzoom/leaflet-control-boxzoom.css" />
 	<!-- Opacity -->
@@ -60,20 +63,19 @@ include_once 'includes/dbh.inc.php';
 <?php
 	if (!isset($_SESSION["useremail"])) {
 		header("location: login.php");
-	}
-	else {
+	} else {
 		?>
 		<div class="wrapper">
 
 		<?php
-		require("sidebar.php");
+		require_once("sidebar.php");
 		?>
 
 		<div class="main">
 			
 		<?php
-		require("navbar.php");
+		require_once("navbar.php");
 		?>
 		<?php
 	}
-	?>
+?>

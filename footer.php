@@ -1,26 +1,23 @@
-		<footer class="footer">
-			<div class="container-fluid">
-				<div class="row text-muted">
-					<div class="col-10 text-start">
-						<p class="mb-0">
-							<!-- <a class="text-muted" href="http://www.vielca.com/" target="_blank"><strong>© 2022 VIELCA INGENIEROS - Avenida de Aragón 17. 46010 VALENCIA (SPAIN) - T. +34 963 604 285 - F. +34 963 619 744</strong></a> -->
-							<strong>© 2023 Map</strong>
-							
-						</p>
-					</div>
-					<div class="col-2 text-start">
-						<select name="selectCountry" id="selectCountry" onchange="changeCountry(this.value)" style="float: right;">
-							<option value="Spain">Spain</option>
-							<option value="USA">USA</option>
-							<option value="Europe">Europe</option>
-						</select>
-					</div>
-				</div>
+<footer class="footer">
+	<div class="container-fluid">
+		<div class="row text-muted">
+			<div class="col-10 text-start">
+				<p class="mb-0">
+					<strong>© 2023 Map</strong>
+				</p>
 			</div>
-		</footer>
-
+			<div class="col-2 text-start">
+				<select name="selectCountry" id="selectCountry" onchange="changeCountry(this.value)" style="float: right;">
+					<option value="Spain">Spain</option>
+					<option value="USA">USA</option>
+					<option value="Europe">Europe</option>
+				</select>
+			</div>
 		</div>
 	</div>
+</footer>
+</div>
+</div>
 </div>
 
 <script src="js/app.js"></script>
@@ -46,7 +43,6 @@ crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 <script src="js/L.TileLayer.BetterWMS.js"></script>
 <script src="js/layersData.js"></script>
-<script src="js/groups.js"></script>
 <script src="opacity/Control.Opacity.js"></script>
 <script src="jquery/jquery-ui-1.10.3.custom.min.js"></script>
 <link rel="stylesheet" href="jquery/jquery-ui-1.10.3.custom.min.css" />

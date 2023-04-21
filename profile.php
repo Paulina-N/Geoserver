@@ -1,11 +1,10 @@
 <?php
-require("header.php");
+require_once("header.php");
 ?>
 
 <?php
 if (isset($_POST['uploadfile'])) {
     $file = $_FILES['file'];
-
     $fileName = $_FILES['file']['name'];
     $fileTmpName = $_FILES['file']['tmp_name'];
     $fileSize = $_FILES['file']['size'];
@@ -25,31 +24,29 @@ if (isset($_POST['uploadfile'])) {
                 move_uploaded_file($fileTmpName, $fileDestination);
 				$sql = "UPDATE users SET profileImg='$fileNameNew' WHERE usersId='$userID'";
 				mysqli_query($conn, $sql);
-            }
-            else {
+            } else {
                 echo "Your file is too big!";
             }
-        }
-        else {
+        } else {
             echo "There was an error uploading your file!";
         }
-    }
-    else if ($file != null) {
+    } elseif ($file != null) {
         echo "You can't upload files of this type! Allowed types: jpg, jpeg, png.";
     }
 }
 
-if(isset($_POST["firstName"])) {
+if (isset($_POST["firstName"])) {
 	$newFirstName = $_POST["firstName"];
 	$newLastName = $_POST["lastName"];
 	$newEmail = $_POST["email"];
-	$sql=mysqli_query($conn, "UPDATE users SET usersFirstName='$newFirstName', usersLastName='$newLastName', usersEmail='$newEmail' WHERE usersId='$userID'");
+	$sql=mysqli_query($conn, "UPDATE users SET usersFirstName='$newFirstName',
+		usersLastName='$newLastName', usersEmail='$newEmail' WHERE usersId='$userID'");
 }
 ?>
 
 <main class="content">
-	<?php 
-		if(isset($_POST["oldpassword"])) {
+	<?php
+		if (isset($_POST["oldpassword"])) {
 			$oldPassword = $_POST["oldpassword"];
 			$newPassword = $_POST["newpassword"];
 			$sql=mysqli_query($conn, "SELECT usersPwd FROM users WHERE usersId='$userID'");
@@ -67,8 +64,7 @@ if(isset($_POST["firstName"])) {
 					<strong>Password changed successfully!</strong>
 				</div>
 				<?php
-			}
-			else {
+			} else {
 				?>
 				<div class="alert-danger">
 					<button type="button" class="btn-close" onclick="this.parentElement.style.display='none';"></button>
@@ -76,16 +72,13 @@ if(isset($_POST["firstName"])) {
 				</div>
 				<?php
 			}
-
 		}
 	?>
 	
 	<div class="container-fluid p-0">
-
 		<div class="mb-3">
 			<h1 class="h3 d-inline align-middle">Profile</h1>
 		</div>
-
 		<div class="row">
 			<div class="col-md-4 col-xl-3">
 				<div class="card mb-3">
@@ -93,13 +86,12 @@ if(isset($_POST["firstName"])) {
 						<h5 class="card-title mb-0">Profile Details</h5>
 					</div>
 					<div class="card-body text-center">
-						<img src="img/uploads/<?php echo $profileImage ?>" alt="<?php echo $firstName ?>" class="rounded-circle mb-2" width="128" height="128" />
+						<img src="img/uploads/<?php echo $profileImage ?>" alt="<?php echo $firstName ?>"
+							class="rounded-circle mb-2" width="128" height="128" />
 						<h5 class="card-title mb-0"><?php echo $firstName, " ", $lastName ?></h5>
 					</div>
 				</div>
 			</div>
-
-			
 
 			<div class="col-md-8 col-xl-9">
 				<div class="card">
@@ -111,7 +103,8 @@ if(isset($_POST["firstName"])) {
 						<form action="" method="POST" enctype="multipart/form-data">
 							<div class="mb-3">
 								<label class="form-label">First name</label>
-								<input id="firstNameInput" type="firstname" name="firstname" class="form-control" value=<?php echo $firstName; ?>>
+								<input id="firstNameInput" type="firstname" name="firstname"
+									class="form-control" value=<?php echo $firstName; ?>>
 							</div>
 							<div class="mb-3">
 								<label class="form-label">Last name</label>
@@ -162,7 +155,7 @@ if(isset($_POST["firstName"])) {
 </main>
 
 <?php
-require("footer.php");
+require_once("footer.php");
 ?>
 
 <script>

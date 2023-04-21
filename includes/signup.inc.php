@@ -28,14 +28,12 @@ if (isset($_POST["submit"])) {
         exit();
     }
 
-    if(strlen($company) > 0) {
+    if (strlen($company) > 0) {
         createCompany($conn, $company, $firstName, $lastName, $email, $password);
-    }
-    else {
+    } else {
         createUser($conn, $firstName, $lastName, $email, $password);
     }
-}
-else {
+} else {
     header("location: ../login.php");
     exit();
 }

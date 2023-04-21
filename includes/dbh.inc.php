@@ -1,16 +1,16 @@
 <?php
+include "../../map_pwd.php";
 
 $serverName = "localhost";
-$dBUserName = "root";
-$dBPassword = "";
+$dBUserName = "map";
+$dBPassword = $DBPWD;
 $dBName = "map";
 
 $conn = mysqli_connect($serverName, $dBUserName, $dBPassword, $dBName);
 
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
-}
-else {
+} else {
     if (isset($_SESSION["useremail"])) {
         $email = $_SESSION["useremail"];
         $sql = "SELECT * FROM users WHERE usersEmail = '$email'";
@@ -29,14 +29,13 @@ else {
                 $row = mysqli_fetch_assoc($result);
                 $companyName = $row['name'];
                 $adminID = $row['admin'];
-            }
-            else {
+            } else {
                 $adminID = 0;
                 $companyID = 0;
             }
         }
 
-        if ($profileImage == NULL) {
+        if ($profileImage == null) {
             $profileImage = "profiledefault.jpg";
         }
 
@@ -60,6 +59,5 @@ else {
 			array_push($allLayersNames, $layername);
         }
         $layersResult = mysqli_query($conn, $sqlLayers);
-    }  
+    }
 }
-
