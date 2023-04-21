@@ -1,0 +1,45 @@
+/*
+ * BOXZOOM
+ */
+.leaflet-control-boxzoom {
+    background-color:white;
+    border-radius:4px;
+    border:2px solid rgba(0,0,0,0.2);
+    width:35px;
+    height:35px;
+    line-height:25px;
+    background-clip: padding-box;
+    cursor:pointer !important;
+}
+
+.with-background-image {
+    background-image:url(square-zoom.png);
+    background-repeat:no-repeat;
+    background-size:28px 28px; /* 25px image, 25px box; subtract 2px for padding on every side = 21px rendering height */
+    background-position:2px 2px;
+}
+
+.leaflet-control-boxzoom.leaflet-control-boxzoom-active {
+    border: 2px solid #7fff00;
+}
+
+.leaflet-container.leaflet-control-boxzoom-active, .leaflet-container.leaflet-control-boxzoom-active path.leaflet-interactive {
+    cursor:crosshair !important;
+}
+
+.leaflet-control-boxzoom i {
+    display:block;
+}
+
+.leaflet-control-boxzoom i.icon {
+    font-size:17px;
+    margin-left:1px;
+    margin-top:3px;
+}
+
+.leaflet-control-boxzoom i.fa {
+    margin-top:6px;
+}
+.leaflet-control-boxzoom i.glyphicon {
+    margin-top:5px;
+}

@@ -1,0 +1,220 @@
+.sidebar [aria-expanded=true]:after, .sidebar [data-bs-toggle=collapse]:not(.collapsed):after {
+    top: 1.4rem;
+    transform: rotate(-135deg);
+}
+
+.sidebar [data-bs-toggle=collapse]:after {
+    border: solid;
+    border-width: 0 0.075rem 0.075rem 0;
+    content: " ";
+    display: inline-block;
+    padding: 2px;
+    position: absolute;
+    right: 1.5rem;
+    top: 1.2rem;
+    transform: rotate(45deg);
+    transition: all .2s ease-out;
+}
+
+*, :after, :before {
+    box-sizing: border-box;
+}
+
+.form-check {
+    color: rgba(233, 236, 239, 0.5);
+}
+
+#map {
+    position: relative;
+    height: 100%;
+    z-index: 1;
+}
+
+#map-content {
+    padding: 0;
+}
+
+#datapopup {
+    width:100%;
+    max-width: 3500px;
+    opacity:.95;
+    left:0;
+    bottom:0;
+    display:none;
+    z-index: 2;
+    position:fixed;
+    background-color:#313131;
+    overflow:auto
+}
+#layerdata {
+    max-width:3500px;
+    min-width:300px;
+    padding:10px 50px;
+    border:2px solid gray;
+    border-radius:10px;
+    background-color:#fff
+    }
+
+#layerpopup {
+    width:100%;
+    height:100%;
+    opacity:.95;
+    top:0;
+    left:0;
+    display:none;
+    z-index: 1;
+    position:fixed;
+    background-color:#313131;
+    overflow:auto
+}
+#editlayerpopup {
+    width:100%;
+    height:100%;
+    opacity:.95;
+    top:0;
+    left:0;
+    display:none;
+    z-index: 1;
+    position:fixed;
+    background-color:#313131;
+    overflow:auto
+}
+#removelayerpopup {
+    width:100%;
+    height:100%;
+    opacity:.95;
+    top:0;
+    left:0;
+    display:none;
+    z-index: 1;
+    position:fixed;
+    background-color:#313131;
+    overflow:auto
+}
+#grouppopup {
+    width:100%;
+    height:100%;
+    opacity:.95;
+    top:0;
+    left:0;
+    display:none;
+    z-index: 1;
+    position:fixed;
+    background-color:#313131;
+    overflow:auto
+}
+#editgrouppopup {
+    width:100%;
+    height:100%;
+    opacity:.95;
+    top:0;
+    left:0;
+    display:none;
+    z-index: 1;
+    position:fixed;
+    background-color:#313131;
+    overflow:auto
+}
+#removegrouppopup {
+    width:100%;
+    height:100%;
+    opacity:.95;
+    top:0;
+    left:0;
+    display:none;
+    z-index: 1;
+    position:fixed;
+    background-color:#313131;
+    overflow:auto
+}
+img#close {
+position:absolute;
+right:-14px;
+top:-14px;
+cursor:pointer
+}
+div#popupAddLayer {
+position:absolute;
+left:50%;
+top:17%;
+margin-left:-202px;
+}
+#layerform {
+max-width:600px;
+width: 500px;
+min-width:300px;
+height: 300px;
+padding:10px 50px;
+border:2px solid gray;
+border-radius:10px;
+background-color:#fff
+}
+#layerform1 {
+    max-width:600px;
+    width: 500px;
+    min-width:300px;
+    height: 200px;
+    padding:10px 50px;
+    border:2px solid gray;
+    border-radius:10px;
+    background-color:#fff
+}
+
+.alert {
+    --bs-alert-bg: transparent;
+    --bs-alert-padding-x: 0.95rem;
+    --bs-alert-padding-y: 0.95rem;
+    --bs-alert-margin-bottom: 1rem;
+    --bs-alert-color: inherit;
+    --bs-alert-border-color: transparent;
+    --bs-alert-border: 0 solid var(--bs-alert-border-color);
+    --bs-alert-border-radius: 0.2rem;
+    background-color: var(--bs-alert-bg);
+    border: var(--bs-alert-border);
+    border-radius: var(--bs-alert-border-radius);
+    color: var(--bs-alert-color);
+    margin-bottom: var(--bs-alert-margin-bottom);
+    padding: var(--bs-alert-padding-y) var(--bs-alert-padding-x);
+    position: relative;
+}
+
+.alert-success {
+    box-sizing: border-box;
+    padding: 0.95rem;
+    color: #117054;
+    background-color: #d2f1e8;
+    border-color: #bbebdd;
+    margin-bottom: 20px;
+}
+
+.alert-danger {
+    box-sizing: border-box;
+    padding: 0.95rem;
+    color: #842029;
+    background-color: #f8d7da;
+    border-color: #f5c2c7;
+    margin-bottom: 20px;
+}
+
+.btn-close {
+    background: transparent url("../img/icons/close_btn.svg") 50%/1em auto no-repeat;
+    border: 0;
+    border-radius: 0.2rem;
+    box-sizing: content-box;
+    color: #000;
+    height: 1em;
+    opacity: .5;
+    padding: 0.25em;
+    width: 1em;
+    float: right;
+}
+
+.companies-table {
+    max-height: 200px;
+    overflow: auto;
+}
+
+.join-requests-table {
+    max-height: 300px;
+    overflow: auto;
+}
