@@ -20,10 +20,6 @@
     box-sizing: border-box;
 }
 
-.form-check {
-    color: rgba(233, 236, 239, 0.5);
-}
-
 #map {
     position: relative;
     height: 100%;

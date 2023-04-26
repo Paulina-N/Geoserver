@@ -1,5 +1,5 @@
 <?php
-include "../../map_pwd.php";
+include $_SERVER['DOCUMENT_ROOT'] . '/map_pwd.php';
 
 $serverName = "localhost";
 $dBUserName = "map";

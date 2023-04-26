@@ -17,6 +17,7 @@
 	<title>Sign Up | Geoserver</title>
 
 	<link href="css/app.css" rel="stylesheet">
+	<link href="css/add.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -25,6 +26,53 @@
 			<div class="row vh-100">
 				<div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
 					<div class="d-table-cell align-middle">
+					<?php
+						if (isset($_GET["error"])) {
+							if ($_GET["error"] == "emptyinput") {
+								?>
+								<div class="alert-danger">
+									<button type="button" class="btn-close" onclick="this.parentElement.style.display='none';"></button>
+									<strong>Fill in all fields!</strong>
+								</div>
+								<?php
+							} elseif ($_GET["error"] == "invalidemail") {
+								?>
+								<div class="alert-danger">
+									<button type="button" class="btn-close" onclick="this.parentElement.style.display='none';"></button>
+									<strong>Choose a proper email format!</strong>
+								</div>
+								<?php
+							} elseif ($_GET["error"] == "passwordsdontmatch") {
+								?>
+								<div class="alert-danger">
+									<button type="button" class="btn-close" onclick="this.parentElement.style.display='none';"></button>
+									<strong>Passwords don't match!</strong>
+								</div>
+								<?php
+							} elseif ($_GET["error"] == "emailExists") {
+								?>
+								<div class="alert-danger">
+									<button type="button" class="btn-close" onclick="this.parentElement.style.display='none';"></button>
+									<strong>This email is already registered!</strong>
+								</div>
+								<?php
+							} elseif ($_GET["error"] == "smtfailed") {
+								?>
+								<div class="alert-danger">
+									<button type="button" class="btn-close" onclick="this.parentElement.style.display='none';"></button>
+									<strong>Something went wrong, try again!</strong>
+								</div>
+								<?php
+							} elseif ($_GET["error"] == "none") {
+								?>
+								<div class="alert-danger">
+									<button type="button" class="btn-close" onclick="this.parentElement.style.display='none';"></button>
+									<strong>You have signed up!</strong>
+								</div>
+								<?php
+							}
+						}
+						?>
 
 						<div class="text-center mt-4">
 							<h1 class="h2">Get started</h1>
@@ -89,24 +137,6 @@
 								</div>
 							</div>
 						</div>
-
-						<?php
-						if (isset($_GET["error"])) {
-							if ($_GET["error"] == "emptyinput") {
-								echo "<p>Fill in all fields!<p>";
-							} elseif ($_GET["error"] == "invalidemail") {
-								echo "<p>Choose a proper email!<p>";
-							} elseif ($_GET["error"] == "passwordsdontmatch") {
-								echo "<p>Passwords don't match!<p>";
-							} elseif ($_GET["error"] == "emailExists") {
-								echo "<p>This email is already registered!<p>";
-							} elseif ($_GET["error"] == "smtfailed") {
-								echo "<p>Something went wrong, try again!<p>";
-							} elseif ($_GET["error"] == "none") {
-								echo "<p>You have signed up!<p>";
-							}
-						}
-						?>
 					</div>
 				</div>
 			</div>
