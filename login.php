@@ -29,14 +29,14 @@
 						if (isset($_GET["error"])) {
 							if ($_GET["error"] == "emptyinput") {
 								?>
-								<div class="alert-danger">
+								<div name="fill in all the fields" class="alert-danger">
 									<button type="button" class="btn-close" onclick="this.parentElement.style.display='none';"></button>
 									<strong>Fill in all fields!</strong>
 								</div>
 								<?php
 							} elseif ($_GET["error"] == "wronglogin") {
 								?>
-								<div class="alert-danger">
+								<div name="wrong login details" class="alert-danger">
 									<button type="button" class="btn-close" onclick="this.parentElement.style.display='none';"></button>
 									<strong>Wrong login details!</strong>
 								</div>

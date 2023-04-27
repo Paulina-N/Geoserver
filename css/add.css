@@ -214,3 +214,7 @@ background-color:#fff
     max-height: 300px;
     overflow: auto;
 }
+
+.form-check-label {
+    color: rgba(233, 236, 239, .5);
+}

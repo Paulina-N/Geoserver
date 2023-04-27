@@ -30,42 +30,42 @@
 						if (isset($_GET["error"])) {
 							if ($_GET["error"] == "emptyinput") {
 								?>
-								<div class="alert-danger">
+								<div name="fill in all fields" class="alert-danger">
 									<button type="button" class="btn-close" onclick="this.parentElement.style.display='none';"></button>
 									<strong>Fill in all fields!</strong>
 								</div>
 								<?php
 							} elseif ($_GET["error"] == "invalidemail") {
 								?>
-								<div class="alert-danger">
+								<div name="choose a proper email format" class="alert-danger">
 									<button type="button" class="btn-close" onclick="this.parentElement.style.display='none';"></button>
 									<strong>Choose a proper email format!</strong>
 								</div>
 								<?php
 							} elseif ($_GET["error"] == "passwordsdontmatch") {
 								?>
-								<div class="alert-danger">
+								<div name="passwords don't match" class="alert-danger" >
 									<button type="button" class="btn-close" onclick="this.parentElement.style.display='none';"></button>
 									<strong>Passwords don't match!</strong>
 								</div>
 								<?php
 							} elseif ($_GET["error"] == "emailExists") {
 								?>
-								<div class="alert-danger">
+								<div name="this email is already registered" class="alert-danger">
 									<button type="button" class="btn-close" onclick="this.parentElement.style.display='none';"></button>
 									<strong>This email is already registered!</strong>
 								</div>
 								<?php
 							} elseif ($_GET["error"] == "smtfailed") {
 								?>
-								<div class="alert-danger">
+								<div name="something went wrong, try again" class="alert-danger">
 									<button type="button" class="btn-close" onclick="this.parentElement.style.display='none';"></button>
 									<strong>Something went wrong, try again!</strong>
 								</div>
 								<?php
 							} elseif ($_GET["error"] == "none") {
 								?>
-								<div class="alert-danger">
+								<div name="you have signed up" class="alert-danger">
 									<button type="button" class="btn-close" onclick="this.parentElement.style.display='none';"></button>
 									<strong>You have signed up!</strong>
 								</div>
