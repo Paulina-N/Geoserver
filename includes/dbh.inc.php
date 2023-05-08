@@ -3,7 +3,8 @@ include $_SERVER['DOCUMENT_ROOT'] . '/map_pwd.php';
 
 $serverName = "localhost";
 $dBUserName = "map";
-$dBPassword = $DBPWD;
+// $dBPassword = $DBPWD;
+$dBPassword = "map"; //password temporary shown for demonstrational purposes
 $dBName = "map";
 
 $conn = mysqli_connect($serverName, $dBUserName, $dBPassword, $dBName);
