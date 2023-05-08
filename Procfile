@@ -1,1 +1,1 @@
-web: vendor/bin/heroku-php-apache2 -p 8080
+web: vendor/bin/heroku-php-apache2 -p 80
