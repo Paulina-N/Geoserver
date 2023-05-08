@@ -142,7 +142,7 @@
 			</div>
 		</div>
 	</main>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 	<script src="jquery/jquery-ui-1.10.3.custom.min.js"></script>
 	<link rel="stylesheet" href="jquery/jquery-ui-1.10.3.custom.min.css" />
 
