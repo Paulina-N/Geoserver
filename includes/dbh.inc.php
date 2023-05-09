@@ -15,8 +15,7 @@ $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $c
 // local server
 // $serverName = "localhost";
 // $dBUserName = "map";
-// // $dBPassword = $DBPWD;
-// $dBPassword = "map"; //password temporary shown for demonstrational purposes
+// $dBPassword = $DBPWD;
 // $dBName = "map";
 
 // $conn = mysqli_connect($serverName, $dBUserName, $dBPassword, $dBName);

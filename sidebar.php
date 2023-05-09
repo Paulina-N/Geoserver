@@ -98,7 +98,7 @@
 								aria-expanded="false"><img src="img/icons/history.PNG"
 								style="width: 30px; height: 20px; border-radius: 4px;" alt="Zooming history"> Zooming history</a>
 							<ul class="sidebar-dropdown list-unstyled collapse" id="history">
-								<ul><label>Click back and forward buttons to go to previous or next extent</label></ul>
+								<ul><label style="color: rgba(233, 236, 239, .5);">Click back and forward buttons to go to previous or next extent</label></ul>
 							</ul>
 						</li>
 						<li class="sidebar-item">
@@ -106,7 +106,7 @@
 								aria-expanded="false"><img src="img/icons/squarezoom.PNG" style="width: 30px; height: 30px; border-radius: 4px;"
 								alt="Square zooming"> Square zooming</a>
 							<ul class="sidebar-dropdown list-unstyled collapse" id="squarezoom">
-								<ul><label>Draw a square on the map to zoom in to an area. One-time zoom per icon click</label></ul>
+								<ul><label style="color: rgba(233, 236, 239, .5);">Draw a square on the map to zoom in to an area. One-time zoom per icon click</label></ul>
 							</ul>
 						</li>
 						<li class="sidebar-item">
@@ -114,7 +114,7 @@
 								aria-expanded="false"><img src="img/icons/ruler.PNG" style="width: 30px; height: 30px; border-radius: 4px;"
 								alt="Ruler"> Ruler</a>
 							<ul class="sidebar-dropdown list-unstyled collapse" id="ruler">
-								<ul><label>Ruler for the distance and bearing measuring. Press ESC or double-click
+								<ul><label style="color: rgba(233, 236, 239, .5);">Ruler for the distance and bearing measuring. Press ESC or double-click
 									to stop using the ruler, and press ESC again to clean the map</label></ul>
 							</ul>
 						</li>
@@ -123,7 +123,7 @@
 								aria-expanded="false"><img src="img/icons/opacity.PNG" style="width: 100px; height: 20px; border-radius: 4px;"
 								alt="Opacity"> Opacity</a>
 							<ul class="sidebar-dropdown list-unstyled collapse" id="opacity">
-								<ul><label>Change the transparency of all active layers by sliding through the slider</label></ul>
+								<ul><label style="color: rgba(233, 236, 239, .5);">Change the transparency of all active layers by sliding through the slider</label></ul>
 							</ul>
 						</li>
 						<li class="sidebar-item">
@@ -131,7 +131,7 @@
 								aria-expanded="false"><img src="img/icons/coordinates.PNG"
 								style="width: 200px; height: 17px; border-radius: 4px;" alt="Coordinates"></a>
 							<ul class="sidebar-dropdown list-unstyled collapse" id="coordinates">
-								<ul><label>Hover the mouse on the map to see live longitude and latitude, or click on the icon
+								<ul><label style="color: rgba(233, 236, 239, .5);">Hover the mouse on the map to see live longitude and latitude, or click on the icon
 									to put your ones to put a marker on the map</label></ul>
 							</ul>
 						</li>
@@ -139,23 +139,23 @@
 							<a class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#print"
 								aria-expanded="false"> Print the map</a>
 							<ul class="sidebar-dropdown list-unstyled collapse" id="print">
-								<ul><label>Use the shortcut CTRL+P to print the map</label></ul>
-							</ul>
-						</li>
-						<li class="sidebar-item">
-							<a class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#sort"
-								aria-expanded="false"> Sort layers</a>
-							<ul class="sidebar-dropdown list-unstyled collapse" id="sort">
-								<ul><label>Sort the layers or the groups of the layers by pressing, holding and moving themup or down
-									in the list of layers. Layers on top of the list show up on top of other layers on the map</label></ul>
+								<ul><label style="color: rgba(233, 236, 239, .5);">Use the shortcut CTRL+P to print the map</label></ul>
 							</ul>
 						</li>
 						<li class="sidebar-item">
 							<a class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#data"
 								aria-expanded="false"> See data</a>
 							<ul class="sidebar-dropdown list-unstyled collapse" id="data">
-								<ul><label>Click on any layer on the map to see the popup with all the information about each layer.
+								<ul><label style="color: rgba(233, 236, 239, .5);">Click on any layer on the map to see the popup with all the information about each layer.
 									Be aware that order of the layers does not affect order of the popups</label></ul>
+							</ul>
+						</li>
+						<li class="sidebar-item">
+							<a class="sidebar-link collapsed" data-bs-toggle="collapse" data-bs-target="#export"
+								aria-expanded="false"> Export data</a>
+							<ul class="sidebar-dropdown list-unstyled collapse" id="export">
+								<ul><label style="color: rgba(233, 236, 239, .5);">Click on any layer on the map to see the popup with all the information about each layer.
+									You will be able to see the export to CSV option in the popup</label></ul>
 							</ul>
 						</li>
 					</ul>

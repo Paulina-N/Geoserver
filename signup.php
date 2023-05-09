@@ -114,12 +114,12 @@
 											<label class="form-check form-check-inline">
 												<input id="individual" class="form-check-input" type="radio"
 													name="inline-radios-example" value="individual" checked>
-												<span class="form-check-label">Individual</span>
+												<span class="form-check-label" style="color: black;">Individual</span>
 											</label>
 											<label class="form-check form-check-inline">
 												<input id="company" class="form-check-input" type="radio"
 													name="inline-radios-example" value="company">
-												<span class="form-check-label">Company</span>
+												<span class="form-check-label" style="color: black;">Company</span>
 											</label>
 										</div>
 										<div class="mb-3" id="company-field" style="display: none;">
